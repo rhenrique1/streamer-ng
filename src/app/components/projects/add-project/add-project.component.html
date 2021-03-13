@@ -1,0 +1,122 @@
+<div class="container">
+  <div *ngIf="isLoading" class="mt-3 text-center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading">
+    <div class="row">
+      <div class="offset-2 col-md-8 rounded mt-5" id="formTarefa">
+        <h1 class="pt-2 text-left fs-36"><strong>New Project</strong></h1>
+        <hr>
+        <div class="row mt-10">
+          <div class="col-sm-12">
+            <form #form ngForm autocomplete="off" (ngSubmit)="insertProject(form.value)">
+              <div class="form-group">
+                <label 
+                  for="projectName" 
+                  class="control-label mt-2 d-block"
+                  >Name
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="projectName" 
+                  name="name"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label 
+                  for="projectImage" 
+                  class="control-label mt-2 d-block"
+                  >Image (URL)
+                </label>
+                <input 
+                  class="form-control" 
+                  id="projectImage" 
+                  name="image"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label 
+                  for="projectWhy" 
+                  class="control-label mt-2 d-block"
+                  >Why
+                </label> 
+                <input 
+                  type="text" 
+                  class="form-control"
+                  id="projectWhy"
+                  name="why"
+                  ngModel
+                  required
+                />       
+              </div>
+              <div class="form-group">
+                <label 
+                  for="projectWhat" 
+                  class="control-label mt-2 d-block"
+                  >What
+                </label> 
+                <input 
+                  type="text" 
+                  class="form-control"
+                  id="projectWhat"
+                  name="what"
+                  ngModel
+                  required
+                />       
+              </div>
+              <div class="form-group">
+                <label 
+                  for="projectWhatWillWeDo" 
+                  class="control-label mt-2 d-block"
+                  >What Will We Do?
+                </label> 
+                <input 
+                  type="text"
+                  id="projectWhatWillWeDo"
+                  class="form-control"
+                  name="whatWillWeDo"
+                  ngModel
+                  required
+                />       
+              </div>
+              <div class="form-group">
+                <label 
+                  for="projectCourse" 
+                  class="control-label mt-2 d-block"
+                  >Course
+                </label> 
+                <select class="form-control">
+                  <option selected disabled>Select the course...</option>
+                  <option *ngFor="let course of courses">{{ course.name }}</option>
+                </select>
+              </div>
+              <div class="row justify-content-end mt-3">
+                <div class="col-sm-3">
+                  <a 
+                    routerLink=""
+                    routerLinkActive="router-link-active"  
+                    class="btn btn-block btn-secondary"
+                    >Voltar
+                  </a>
+                </div>
+                <div class="col-sm-3">
+                  <button 
+                    class="btn btn-block btn-primary" 
+                    type="submit"
+                    [disabled]="!form.valid"
+                    >Salvar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
