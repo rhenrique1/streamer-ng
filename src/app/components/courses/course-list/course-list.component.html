@@ -2,15 +2,6 @@
   <div class="row">
     <div class=" col-md-12">
       <h1 class="pt-2 text-left fs-36"><strong>Courses</strong></h1>
-      <!-- <div class="row mt-40">
-        <div class="col-4">
-          <div class="form-group">
-            <label class="d-block fw-bold" for="searchBar">Buscar fornecedor:</label>
-            <input class="form-control w-100" (ngModelChange)="filterByRazaoSocial($event)" [(ngModel)]="razaoSocial" type="text"
-              name="searchBar" placeholder="ex: Limpol, Veja, Bombril etc">
-          </div>
-        </div>
-      </div> -->
       <div *ngIf="isLoading" class="mt-3 text-center">
         <app-loading-spinner></app-loading-spinner>
       </div>

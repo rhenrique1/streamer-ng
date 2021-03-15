@@ -57,9 +57,11 @@ export class AddProjectComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        confirm('Project #' + res + ' created successfully!');
         this.router.navigate(['/home']);
       }, err => {
         console.log(err);
+        confirm('An error ocurred while creating the project!');
         this.router.navigate(['/home']);
       }
     ))

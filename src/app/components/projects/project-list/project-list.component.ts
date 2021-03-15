@@ -5,6 +5,8 @@ import { Project } from 'src/app/shared/models/project.model';
 import { ProjectStatus } from 'src/app/shared/enums/project-status.enum';
 import { ProjectService } from 'src/app/shared/services/project.service';
 import { NavigationService } from 'src/app/shared/utils/navigation.service';
+import { Course } from 'src/app/shared/models/course.model';
+import { CourseService } from 'src/app/shared/services/course.service';
 
 @Component({
   selector: 'app-project-list',
@@ -16,10 +18,12 @@ export class ProjectListComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public isLoading: boolean = true; 
   public courseId: number = 0;
+  public course!: Course;
   public projects: Project[] = [];
   public projectStatusEnum: Array<string> = Object.keys(ProjectStatus).filter(key => isNaN(+key));
 
   constructor(
+    private courseService: CourseService,
     private projectService: ProjectService,
     private activatedRoute: ActivatedRoute,
     public navigationService: NavigationService
@@ -29,6 +33,7 @@ export class ProjectListComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.courseId = params['id'];
     });
+    this.initCourse();
     this.initProjects();
   }
 
@@ -36,6 +41,18 @@ export class ProjectListComponent implements OnInit {
     if(this.subscriptions.length > 0) {
       this.subscriptions.forEach(s => s.unsubscribe());
     }
+  }
+
+  initCourse(): void {
+    this.subscriptions.push(this.courseService.getCourseById(this.courseId)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.course = res;
+      }, err => {
+        console.log(err);
+      }
+    ));
   }
 
   initProjects(): void {

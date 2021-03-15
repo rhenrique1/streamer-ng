@@ -85,9 +85,11 @@ export class EditProjectComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        confirm('Project updated!');
         this.router.navigate(['/home']);
       }, err => {
         console.log(err);
+        confirm('An error ocurred while updating the project');
         this.router.navigate(['/home']);
       }
     ));
