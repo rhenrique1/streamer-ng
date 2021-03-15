@@ -9,5 +9,6 @@ export interface Project {
     what: string;
     whatWillWeDo: string;
     projectStatus: ProjectStatus;
-    courseId: Course["id"];
+    course: Course;
+    courseId: number;
 }

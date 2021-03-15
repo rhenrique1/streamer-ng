@@ -8,6 +8,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { EditProjectComponent } from './components/projects/edit-project/edit-project.component';
+import { FormsModule } from '@angular/forms';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+import { CourseListComponent } from './components/courses/course-list/course-list.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     HomeComponent,
     NavBarComponent,
     AddProjectComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EditProjectComponent,
+    ProjectListComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

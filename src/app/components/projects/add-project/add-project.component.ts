@@ -20,6 +20,7 @@ export class AddProjectComponent implements OnInit {
   public projectForm!: NgForm;
   public courses: Course[] = [];
   public isLoading: boolean = true;
+  public isCourseSelected: boolean = false;
   constructor(
     private projectService: ProjectService,
     private courseService: CourseService,
@@ -63,4 +64,8 @@ export class AddProjectComponent implements OnInit {
       }
     ))
   }  
+
+  verifyCourseSelected(id: any): void {
+    this.isCourseSelected = (id > 0);
+  }
 }

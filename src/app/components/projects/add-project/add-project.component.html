@@ -9,7 +9,7 @@
         <hr>
         <div class="row mt-10">
           <div class="col-sm-12">
-            <form #form ngForm autocomplete="off" (ngSubmit)="insertProject(form.value)">
+            <form #projectForm="ngForm" autocomplete="off" (ngSubmit)="insertProject(projectForm)">
               <div class="form-group">
                 <label 
                   for="projectName" 
@@ -90,9 +90,9 @@
                   class="control-label mt-2 d-block"
                   >Course
                 </label> 
-                <select class="form-control">
-                  <option selected disabled>Select the course...</option>
-                  <option *ngFor="let course of courses">{{ course.name }}</option>
+                <select ngModel name="courseId" class="form-control" (ngModelChange)="verifyCourseSelected($event)">
+                  <option selected disabled [ngValue]="0">Select the course...</option>
+                  <option *ngFor="let course of courses" [ngValue]="course.id">{{ course.name }}</option>
                 </select>
               </div>
               <div class="row justify-content-end mt-3">
@@ -108,7 +108,7 @@
                   <button 
                     class="btn btn-block btn-primary" 
                     type="submit"
-                    [disabled]="!form.valid"
+                    [disabled]="!projectForm.valid || !isCourseSelected"
                     >Salvar
                   </button>
                 </div>
